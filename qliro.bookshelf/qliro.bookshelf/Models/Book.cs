@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
-
-namespace Qliro.BookShelf.Models
+﻿namespace Qliro.BookShelf.Models
 {
     public class Book
     {

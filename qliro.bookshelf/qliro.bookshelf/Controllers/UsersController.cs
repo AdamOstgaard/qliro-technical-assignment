@@ -1,17 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Qliro.BookShelf.Dtos;
 using Qliro.BookShelf.Models;
-using Qliro.BookShelf.Services;
 using Qliro.BookShelf.Services;
 
 namespace Qliro.BookShelf.Controllers
@@ -47,7 +42,7 @@ namespace Qliro.BookShelf.Controllers
                 }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 // NOTE: The key is null, iat should be set from app config but is removed here for the sake of simplicity.
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.ASCII.GetBytes("testtesttesttesttesttest")), SecurityAlgorithms.HmacSha256Signature)
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.ASCII.GetBytes("a4b6b324-001d-4bb3-b328-f3fd85de656e")), SecurityAlgorithms.HmacSha256Signature)
             };
 
             var token = tokenHandler.CreateToken(tokenDescriptor);

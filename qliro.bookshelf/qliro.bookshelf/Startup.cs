@@ -1,22 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Qliro.BookShelf.Data;
-using Qliro.BookShelf.Models;
-using Qliro.BookShelf.Services;
 using Qliro.BookShelf.Services;
 
 namespace Qliro.BookShelf
@@ -34,7 +24,8 @@ namespace Qliro.BookShelf
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDbContext<ApplicationDbContext>(options => options.UseInMemoryDatabase("test")
+            services.AddDbContext<ApplicationDbContext>(options => 
+                    options.UseInMemoryDatabase("test")
                 //options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")
             );
 
@@ -50,8 +41,8 @@ namespace Qliro.BookShelf
                     x.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateIssuerSigningKey = true,
-                        // NOTE: The IssuerSigningKey is null, iat should be set from app config but is removed here for the sake of simplicity.
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("testtesttesttesttesttest")),
+                        // NOTE: The IssuerSigningKey should be set from app config but is removed here for the sake of simplicity.
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("a4b6b324-001d-4bb3-b328-f3fd85de656e")),
                         ValidateIssuer = false,
                         ValidateAudience = false
                     };

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Qliro.BookShelf.Dtos
+﻿namespace Qliro.BookShelf.Dtos
 {
     public class UserDto
     {
