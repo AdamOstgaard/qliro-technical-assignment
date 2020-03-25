@@ -2,34 +2,34 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using qliro.bookshelf.Data;
-using qliro.bookshelf.Models;
+using Qliro.BookShelf.Data;
+using Qliro.BookShelf.Models;
 
-namespace qliro.bookshelf.Services
+namespace Qliro.BookShelf.Services
 {
     public class BookShelfService
     {
-        private readonly ApplicationContext _context;
+        private readonly ApplicationDbContext _dbContext;
 
-        public BookShelfService(ApplicationContext context)
+        public BookShelfService(ApplicationDbContext dbContext)
         {
-            _context = context;
+            _dbContext = dbContext;
         }
 
         public IEnumerable<Book> GetAllBooks()
-            => _context.Books;
+            => _dbContext.Books;
 
         public async Task<User> FindUserAsync(string userId)
-            => await _context.Users.FindAsync(userId);
+            => await _dbContext.Users.FindAsync(userId);
 
         public async Task<Book> FindBookAsync(int bookId)
-            => await _context.Books.FindAsync(bookId);
+            => await _dbContext.Books.FindAsync(bookId);
 
         public async Task RegisterLoanAsync(Book book, User user)
         {
             var loan = new Loan(user, book, DateTime.Now);
-            _context.Loans.Add(loan);
-            await _context.SaveChangesAsync();
+            _dbContext.Loans.Add(loan);
+            await _dbContext.SaveChangesAsync();
         }
 
         public async Task ReturnBookAsync(User user, int bookId)
@@ -38,7 +38,7 @@ namespace qliro.bookshelf.Services
             var loan = user.Loans.FirstOrDefault(l => l.Book == book) 
                        ?? throw new InvalidOperationException("This user is not holding this book.");
             
-            _context.Loans.Remove(loan);
+            _dbContext.Loans.Remove(loan);
         }
 
     }

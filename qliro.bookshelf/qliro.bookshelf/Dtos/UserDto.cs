@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace qliro.bookshelf.Dtos
+namespace Qliro.BookShelf.Dtos
 {
     public class UserDto
     {

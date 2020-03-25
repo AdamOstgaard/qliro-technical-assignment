@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 
-namespace qliro.bookshelf.Models
+namespace Qliro.BookShelf.Models
 {
     public class Book
     {

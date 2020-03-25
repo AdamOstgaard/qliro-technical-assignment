@@ -2,19 +2,18 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using qliro.bookshelf.Data;
-using qliro.bookshelf.Models;
+using Qliro.BookShelf.Data;
+using Qliro.BookShelf.Models;
 
-namespace qliro.bookshelf.Services
+namespace Qliro.BookShelf.Services
 {
     public class UserService
     {
-        private readonly ApplicationContext _context;
+        private readonly ApplicationDbContext _dbContext;
 
-        public UserService(ApplicationContext context)
+        public UserService(ApplicationDbContext dbContext)
         {
-            _context = context;
+            _dbContext = dbContext;
         }
 
         public User? Authenticate(string username, string password)
@@ -24,7 +23,7 @@ namespace qliro.bookshelf.Services
                 return null;
             }
 
-            var user = _context.Users.FirstOrDefault(u => u.UserName == username);
+            var user = _dbContext.Users.FirstOrDefault(u => u.UserName == username);
 
             if (user == null)
             {
@@ -44,7 +43,7 @@ namespace qliro.bookshelf.Services
 
         public User Create(User user, string password)
         {
-            if (_context.Users.Any(u => u.UserName == user.UserName))
+            if (_dbContext.Users.Any(u => u.UserName == user.UserName))
             {
                 throw new InvalidOperationException("User name already exists.");
             }
@@ -57,8 +56,8 @@ namespace qliro.bookshelf.Services
             user.PasswordHash = hash;
             user.PasswordSalt = hmac.Key;
 
-            _context.Users.Add(user);
-            _context.SaveChanges();
+            _dbContext.Users.Add(user);
+            _dbContext.SaveChanges();
 
             return user;
         }

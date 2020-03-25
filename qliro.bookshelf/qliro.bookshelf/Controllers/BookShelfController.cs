@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using qliro.bookshelf.Data;
-using qliro.bookshelf.Models;
-using qliro.bookshelf.Services;
+using Qliro.BookShelf.Data;
+using Qliro.BookShelf.Models;
+using Qliro.BookShelf.Services;
 
-namespace qliro.bookshelf.Controllers
+namespace Qliro.BookShelf.Controllers
 {
     [Authorize]
     [ApiController]

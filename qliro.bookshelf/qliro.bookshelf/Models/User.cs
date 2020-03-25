@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace qliro.bookshelf.Models
+namespace Qliro.BookShelf.Models
 {
     public class User
     {

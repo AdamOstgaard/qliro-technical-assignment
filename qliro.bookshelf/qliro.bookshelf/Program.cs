@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace qliro.bookshelf
+namespace Qliro.BookShelf
 {
     public class Program
     {

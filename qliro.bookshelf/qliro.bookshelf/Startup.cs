@@ -14,11 +14,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
-using qliro.bookshelf.Data;
-using qliro.bookshelf.Models;
-using qliro.bookshelf.Services;
+using Qliro.BookShelf.Data;
+using Qliro.BookShelf.Models;
+using Qliro.BookShelf.Services;
+using Qliro.BookShelf.Services;
 
-namespace qliro.bookshelf
+namespace Qliro.BookShelf
 {
     public class Startup
     {
@@ -33,9 +34,9 @@ namespace qliro.bookshelf
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDbContext<ApplicationContext>(options => 
-                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")
-            ));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseInMemoryDatabase("test")
+                //options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")
+            );
 
             services.AddAuthentication(x =>
                 {
@@ -64,13 +65,7 @@ namespace qliro.bookshelf
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-
-                app.UseDeveloperExceptionPage();
-            
-
             app.UseHttpsRedirection();
-
-            
             app.UseAuthentication();
             
             app.UseRouting();

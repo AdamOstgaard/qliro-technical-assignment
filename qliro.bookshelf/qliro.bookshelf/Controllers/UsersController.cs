@@ -9,11 +9,12 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using qliro.bookshelf.Dtos;
-using qliro.bookshelf.Models;
-using qliro.bookshelf.Services;
+using Qliro.BookShelf.Dtos;
+using Qliro.BookShelf.Models;
+using Qliro.BookShelf.Services;
+using Qliro.BookShelf.Services;
 
-namespace qliro.bookshelf.Controllers
+namespace Qliro.BookShelf.Controllers
 {
     [Route("/Users/")]
     public class UsersController : Controller
